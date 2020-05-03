@@ -25,10 +25,14 @@
   var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: [{% for j in yearlist %}
+          '{{j}}' ,
+          {% endfor %}],
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              label: 'Mean Cost Price per year',
+              data: [{% for j in meanlist %}
+              {{j}},
+              {% endfor %}],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -62,7 +66,54 @@
   
   
   </script>
-  
+   <script>
+    $(document).ready(function(){
+
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: [{% for j in yearlist %}
+        '{{j}}' ,
+        {% endfor %}],
+        datasets: [{
+            label: 'Mean Production per year',
+            data: [{% for j in pmeanlist %}
+            {{j}},
+            {% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+    }); 
+
+
+</script>
   <body class="">
     <div class="wrapper">
       <div class="sidebar">
@@ -72,7 +123,7 @@
         <div class="sidebar-wrapper">
           <div class="logo">
             <a href="javascript:void(0)" class="simple-text logo-normal">
-              &nbsp Predictive Cotton Pricing
+              &nbsp Predictive Commodity Pricing
             </a>
           </div>
           <ul class="nav">
@@ -98,11 +149,11 @@
             <li class="active">
               <a href="{% url 'prediction' %}">
                 <!--i class="tim-icons icon-puzzle-10"></i-->
-                <p>My Predictions</p>
+                <p>Prediction</p>
               </a>
             </li>
             <li>
-              <a>
+              <a href="{% url 'history' %}">
                 <!--i class="tim-icons icon-align-center"></i-->
                 <p>History</p>
               </a>
@@ -121,7 +172,7 @@
                     <span class="navbar-toggler-bar bar3"></span>
                   </button>
                 </div>
-                <a class="navbar-brand" href="javascript:void(0)">User Profile</a>
+                <a class="navbar-brand" href="javascript:void(0)">Prediction</a>
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -172,15 +223,15 @@
             <div class="row">
               <div class="col-12">
                 <div class="card card-chart">
-                  <div class="card-header ">
+                  <div class="card-header " style="padding-bottom: 15px">
                     <div class="row">
                       <div class="col-sm-6 text-left">
                         <h5 class="card-category">Prediction</h5>
-                        <h2 class="card-title">RESUTS</h2>
+                        <h2 class="card-title">YOUR PRICING MODEL:</h2>
 
-                          COST PRICE:   {{pred1}}<br>
-                          PRODUCTION: {{pred2}} <br>
-                          SELLING PRICE: {{pred3}}
+                          <span>COST PRICE:  Rs. {{costp}}</span><br>
+                          PRODUCTION:  {{propred}} <br>
+                          SELLING PRICE:Rs. {{sellp}}
                         <br>
                         
                       </div>
@@ -218,11 +269,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="card-body">
+                  <!-- <div class="card-body">
                     <div class="chart-area">
                       <canvas id="chartBig1"></canvas>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -230,35 +281,36 @@
               <div class="col-lg-4">
                 <div class="card card-chart">
                   <div class="card-header">
-                    <h5 class="card-category">Total Sales</h5>
-                    <h3 class="card-title"><!--i class="tim-icons icon-bell-55 text-primary"></i--> $2.5m</h3>
+                    <h5 class="card-category">Mean Annual Cost Price vs Year</h5>
+                    <h3 class="card-title"><!--i class="tim-icons icon-bell-55 text-primary"></i--> Cost in Rs./Quintal</h3>
                     <canvas id="myChart" width="200" height="200"></canvas>
                   </div>
-                  <div class="card-body">
+                  <!-- <div class="card-body">
                     <div class="chart-area">
                       <canvas id="chartLinePurple"></canvas>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
-              <div class="col-lg-4">
+               <div class="col-lg-4">
                 <div class="card card-chart">
                   <div class="card-header">
-                    <h5 class="card-category">Gross Production</h5>
-                    <h3 class="card-title"><!--i class="tim-icons icon-delivery-fast text-info"></i--> 3,500 bales</h3>
-                  </div>
-                  <div class="card-body">
+                    <h5 class="card-category">Mean Annual Production Vs Year</h5>
+                      <h3 class="card-title"><!--i class="tim-icons icon-delivery-fast text-info"></i-->Production in Kg/Hectare</h3>
+                     <canvas id="myChart2" width="200" height="200"></canvas>
+                    </div>
+                  <!-- <div class="card-body">
                     <div class="chart-area">
                       <canvas id="CountryChart"></canvas>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
-              <div class="col-lg-4">
+              <!-- <div class="col-lg-4">
                 <div class="card card-chart">
                   <div class="card-header">
                     <h5 class="card-category">Stocks Left</h5>
-                    <h3 class="card-title"><!--i class="tim-icons icon-send text-success"></i--> 1250 bales</h3>
+                    <h3 class="card-title">i class="tim-icons icon-send text-success"></i--><!--1250 bales</h3>
                   </div>
                   <div class="card-body">
                     <div class="chart-area">
@@ -267,5 +319,5 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 </body>

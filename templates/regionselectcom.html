@@ -24,10 +24,10 @@
             </a>
           </div>
           <ul class="nav">
-            <li class="active ">
+            <li>
               <a href="{% url 'aboutus' %}">
                 <!--i class="tim-icons icon-chart-pie-36"></i-->
-                <p>About Us</p>
+                <p>About us</p>
               </a>
             </li>
             <li >
@@ -36,13 +36,13 @@
                 <p>User Profile</p>
               </a>
             </li>
-            <li>
+            <li class="active">
               <a href="{% url 'regionselect' %}">
                 <!--i class="tim-icons icon-pin"></i-->
                 <p>New Project</p>
               </a>
             </li>
-            <!--  -->
+            
             <li>
               <a href="{% url 'prediction' %}">
                 <!--i class="tim-icons icon-puzzle-10"></i-->
@@ -69,7 +69,7 @@
                   <span class="navbar-toggler-bar bar3"></span>
                 </button>
               </div>
-              <a class="navbar-brand" href="javascript:void(0)">About Us</a>
+              <a class="navbar-brand" href="javascript:void(0)">Commodity Select <a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -146,7 +146,7 @@
              <div class="col-md-8"> 
             <div class="card">
               <div class="card-header">
-                
+                <h5 class="title">Commodity Select</h5>
               </div>
                <div class="card-body">
                 <!-- <form>
@@ -206,23 +206,18 @@
                       </div>
                     </div>
                 </form> -->
-                
-                <!-- <form method="post" action="{% url 'formdata' %}" >
+              
+                <form method="post" action="{% url 'areadata' %}" >
                         {% csrf_token %}
-                            {{ forminput.area.label}}
-                            {{ forminput.area }}
-                            {{ forminput.region }}
-                            <button type='submit' >Submit</button>
+                            <!-- {{ forminput.area.label}}
+                            {{ forminput.area }} -->
+                            <div class="form-group">
+                                {{ forminput.commodity }}
+                            </div>
+                            
+                            <button type='submit' class="btn btn-fill btn-primary" >Submit</button>
                         </form>
-                </div> -->
-                <h2 class="card-title">About Us</h2>
-                <h5 class="card-category" style="font-size:18px">
-                 
-                 
-                  We are the solution you need to choose the suitable pricing model for your crop for the given financial year based on the state and area of land you are growing the commodity in. We collect historical data of the production, demands, consumer rates, analyse it using several Machine Learning models and predict the how the apt pricing model for your chosen commodity. The pricing model will include the production, cost of production and also the selling price for your crop!
-                  To help aid you, we provide visualization of the data too.
-                    </h5>
-
+                </div>
               <!-- <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Save and Continue</button>
               </div> --> 

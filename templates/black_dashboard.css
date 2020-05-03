@@ -18851,6 +18851,7 @@ code {
 .form-group .form-control,
 .input-group .form-control {
   padding: 10px 18px 10px 18px;
+  background-color: #27293d;
 }
 
 .form-group .form-control+.input-group-prepend .input-group-text,
@@ -19970,7 +19971,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card .card-header {
-  padding: 15px 15px 0;
+  padding: 15px 15px 15px;
   border: 0;
   color: rgba(255, 255, 255, 0.8);
 }

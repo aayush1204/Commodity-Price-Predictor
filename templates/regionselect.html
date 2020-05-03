@@ -20,7 +20,7 @@
         <div class="sidebar-wrapper">
           <div class="logo">
             <a href="javascript:void(0)" class="simple-text logo-normal">
-              &nbsp Predictive Cotton Pricing
+              &nbsp Predictive Commodity Pricing
             </a>
           </div>
           <ul class="nav">
@@ -30,13 +30,13 @@
                 <p>About us</p>
               </a>
             </li>
-            <li class="active ">
+            <li >
               <a href="{% url 'user' %}">
                 <!--i class="tim-icons icon-single-02"></i-->
                 <p>User Profile</p>
               </a>
             </li>
-            <li>
+            <li class="active">
               <a href="{% url 'regionselect' %}">
                 <!--i class="tim-icons icon-pin"></i-->
                 <p>New Project</p>
@@ -46,11 +46,11 @@
             <li>
               <a href="{% url 'prediction' %}">
                 <!--i class="tim-icons icon-puzzle-10"></i-->
-                <p>My Predictions</p>
+                <p>Prediction</p>
               </a>
             </li>
             <li>
-              <a>
+              <a href="{% url 'history' %}">
                 <!--i class="tim-icons icon-align-center"></i-->
                 <p>History</p>
               </a>
@@ -69,7 +69,7 @@
                   <span class="navbar-toggler-bar bar3"></span>
                 </button>
               </div>
-              <a class="navbar-brand" href="javascript:void(0)">User Profile</a>
+              <a class="navbar-brand" href="javascript:void(0)">Region Select</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -136,7 +136,7 @@
                   </div>
                 </p>
                 <div class="card-description">
-                We help you predict future market trends of cotton based on data collected from the past...
+                  We help you sell your commodities at the right price!
                 </div>
                 <br>
                 <img src="{% static 'cotton_icon.png' %} ">
@@ -207,12 +207,20 @@
                     </div>
                 </form> -->
               
-                <form method="post" action="{% url 'formdata' %}" >
+                <form method="post" action="{% url 'formdata' sb=iny %}" >
                         {% csrf_token %}
-                            {{ forminput.area.label}}
-                            {{ forminput.area }}
-                            {{ forminput.region }}
-                            <button type='submit' >Submit</button>
+                        <div class="form-group">
+                          <label>{{ forminput.area.label}}</label>
+                          
+                          {{ forminput.area }}
+                          
+                          </div>
+                          <div class="form-group">
+                            <label>{{ forminput.region.label}}</label>  
+                          {{ forminput.region }}
+                            
+                            </div>
+                            <button type='submit'class="btn btn-fill btn-primary" >Submit</button>
                         </form>
                 </div>
               <!-- <div class="card-footer">

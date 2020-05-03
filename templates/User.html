@@ -20,7 +20,7 @@
         <div class="sidebar-wrapper">
           <div class="logo">
             <a href="javascript:void(0)" class="simple-text logo-normal">
-              &nbsp Predictive Cotton Pricing
+              &nbsp Predictive Commodity Pricing
             </a>
           </div>
           <ul class="nav">
@@ -43,17 +43,18 @@
               </a>
             </li>
             <li>
-              <a>
-                <!--i class="tim-icons icon-bell-55"></i-->
-                <p>History</p>
+              <a href="{% url 'prediction' %}">
+                <!--i class="tim-icons icon-puzzle-10"></i-->
+                <p>Prediction</p>
               </a>
             </li>
             <li>
-              <a href="{% url 'prediction' %}">
-                <!--i class="tim-icons icon-puzzle-10"></i-->
-                <p>My Predictions</p>
+              <a href="{% url 'history' %}">
+                
+                <p>History</p>
               </a>
             </li>
+            
             <!-- <li>
               <a>
                  class="tim-icons icon-align-center"></i-->
@@ -141,7 +142,7 @@
                   </div>
                 </p>
                 <div class="card-description">
-                We help you predict future market trends of cotton based on data collected from the past...
+                  We help you sell your commodities at the right price!
                 </div>
                 <br>
                 <img src="{% static 'cotton_icon.png' %} ">
@@ -154,7 +155,7 @@
                 <h5 class="title">Edit Profile</h5>
               </div>
               <div class="card-body">
-                <form>
+                <form >
                   <div class="row">
                     <div class="col-md-5 pr-md-1">
                       <div class="form-group">
