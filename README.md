@@ -39,3 +39,10 @@ Mean Production/Year and Mean Cost Price/Year using charts.js are also shown. Th
 The model which stores the objects of the ‘History’ tab can be accessed through the Django Admin too.The user can create new objects for the model using the Admin feature of Django.
 <h2>Screenshots</h2>
 
+![Screenshot](screenshots/About.png)
+![Screenshot](screenshots/Profile.png)
+![Screenshot](screenshots/commodityselect.png)
+![Screenshot](screenshots/regionselect.png)
+![Screenshot](screenshots/Prediction.png)
+![Screenshot](screenshots/History.png)
+
